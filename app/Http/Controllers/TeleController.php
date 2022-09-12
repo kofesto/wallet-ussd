@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\AfricasTalking\SDK\AfricasTalking;
+use App\Model\User;
+use App\Notifications\PaymentNotification;
+use Illuminate\Notifications\Notification;
+
+//use App\AfricasTalking\SDK\AfricasTalking;
 
 class TeleController extends Controller
 {
@@ -49,7 +53,7 @@ class TeleController extends Controller
             $response .= $data_balance;
         }else if(isset($level[0]) && $level[0] == 2 && !isset($level[1])){
             $response = "END Your Phone Number is \n";
-            $response = $phone_number;
+            $response .= $phone_number;
         }
         header('Content-type: text/plain');
         return $response;
@@ -94,7 +98,12 @@ class TeleController extends Controller
             $response .= "4. Previous \n";
             $response .= "3. Next";
         } else if(isset($level[0]) && $level[0] ==1 && !isset($level[1])){
-            $response  = "Enter your friend phone number";
+            $response  = "Enter your friend phone number \n";
+            $response .= "END Message sent to Phone number";
+        } else if(isset($level[0]) && $level[0] ==2 && !isset($level[1])){
+            $wallet_balance = '10,000 NGN';
+            $response  = "END Your wallet balance is : \n";
+            $response .= $wallet_balance;
         }
     }
 }

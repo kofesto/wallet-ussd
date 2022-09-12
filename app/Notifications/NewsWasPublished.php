@@ -3,25 +3,25 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Notifiable;
 use NotificationChannels\AfricasTalking\AfricasTalkingChannel;
 use NotificationChannels\AfricasTalking\AfricasTalkingMessage;
 
-class PaymentNotification extends Notification
+class NewsWasPublished extends Notification
 {
     use Queueable;
 
-    protected $phone_number;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($phone_number)
+    public function __construct()
     {
-        $this->phone_number = $phone_number;
+        //
     }
+
     /**
      * Get the notification's delivery channels.
      *
@@ -32,10 +32,18 @@ class PaymentNotification extends Notification
     {
         return [AfricasTalkingChannel::class];
     }
+
+    /**
+     * Get the sms representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \NotificationChannels\AfricasTalking\AfricasTalkingMessage;
+     */
     public function toAfricasTalking($notifiable)
     {
         return (new AfricasTalkingMessage)
                     ->content('Hello World');
 
     }
+
 }
