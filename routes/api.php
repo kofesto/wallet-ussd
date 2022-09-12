@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/ussd',[TeleController::class,'ussd']);
 
 Route::post('/account',[TeleController::class,'account']);
+
+Route::get('/raa', function () {
+    return json_encode([1, 2, 3]);
+});

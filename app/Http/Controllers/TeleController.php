@@ -108,6 +108,11 @@ class TeleController extends Controller
         header('Content-type: text/plain');
         return $response;
     }
+
+    public function show()
+    {
+        return 'hellow heroku';
+    }
 }
 
 /*
