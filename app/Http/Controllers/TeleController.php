@@ -111,7 +111,10 @@ class TeleController extends Controller
 
     public function show()
     {
-        return 'hellow heroku';
+        return response()->json([
+            'name' => 'Abigail',
+            'state' => 'CA',
+        ]);
     }
 }
 

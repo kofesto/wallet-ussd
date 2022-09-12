@@ -26,3 +26,5 @@ Route::post('/account',[TeleController::class,'account']);
 Route::get('/raa', function () {
     return json_encode([1, 2, 3]);
 });
+
+Route::get('/show',[TeleController::class,'show']);
