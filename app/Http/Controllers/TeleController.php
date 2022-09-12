@@ -105,6 +105,8 @@ class TeleController extends Controller
             $response  = "END Your wallet balance is : \n";
             $response .= $wallet_balance;
         }
+        header('Content-type: text/plain');
+        return $response;
     }
 }
 
